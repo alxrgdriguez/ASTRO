@@ -1,0 +1,18 @@
+---
+interface Props {
+  color?: string;
+}
+
+const { color = "black" } = Astro.props;
+---
+
+<header>
+  <h1 style={`color: ${color}`}>Astro | Alejandro</h1>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/blog">Blog</a>
+    <a href="/contact">Contact</a>
+  </nav>
+</header>
