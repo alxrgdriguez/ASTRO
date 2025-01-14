@@ -9,7 +9,7 @@ const data = (await response.json()) as PokemonListResponse;
 
 console.log(data);
 
-const title = "POKEMON | API";
+const title = "POKEMON  |  API";
 ---
 
 <MainLayout title={title}>
@@ -18,8 +18,8 @@ const title = "POKEMON | API";
 
   <section
     aria-label="Listado de Pokemons"
-    class="grid grid-cols-3 sm:grid-cols-3
-    lg:grid-cols-3 gap-4"
+    class="grid grid-cols-3 sm:grid-cols-
+    lg:grid-cols-3 gap-4 mt-5"
   >
     {
       data.results.map((pokemon) => (
