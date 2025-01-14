@@ -1,14 +1,30 @@
 ---
+// Codigo server side only
+import type { PokemonListResponse } from "../interfaces/pokemon-list.response";
+import PokemonCard from "../components/pokemons/pokemonCard.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
 const response = await fetch("https://pokeapi.co/api/v2/pokemon");
-const data = await response.json();
+const data = (await response.json()) as PokemonListResponse;
 
-const title = "Astro Pokemon";
+console.log(data);
+
+const title = "POKEMON | API";
 ---
 
 <MainLayout title={title}>
-  <h1 class="text-5xl font-bold text-center mt-6">
-    Bienvenido a Astro Pokemon
-  </h1>
+  <h1 class="text-5xl font-bold text-center mt-6">Listado de Pokemons</h1>
+  <hr class="mt-4 mb-4" />
+
+  <section
+    aria-label="Listado de Pokemons"
+    class="grid grid-cols-3 sm:grid-cols-3
+    lg:grid-cols-3 gap-4"
+  >
+    {
+      data.results.map((pokemon) => (
+        <PokemonCard name={pokemon.name} url={pokemon.url} />
+      ))
+    }
+  </section>
 </MainLayout>
