@@ -27,4 +27,21 @@ const { page } = Astro.props;
   >
     {page.data.map(({ name, url }) => <PokemonCard name={name} url={url} />)}
   </section>
+
+  <section class="flex px-10 mt-10 gap-2 items-center">
+    <a class="btn" href="">Siguiente</a>
+    <a class="btn" href="">Anterior</a>
+
+    <span>1</span>
+  </section>
 </MainLayout>
+
+<style>
+  .btn {
+    @apply text-blue-500 rounded-md cursor-pointer;
+  }
+
+  .disabled {
+    @apply text-gray-600 cursor-pointer;
+  }
+</style>
