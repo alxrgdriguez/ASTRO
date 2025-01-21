@@ -1,13 +1,20 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import { siteInfo } from "src/consts/site-info";
 
 interface Props {
-  title: string;
+  title?: string;
+  image?: string;
   favicon?: string;
+  description?: string;
 }
 
-const { title, favicon = "../../public/img/pokedex.png" } =
-  Astro.props as Props;
+const {
+  title = siteInfo.title,
+  description = siteInfo.description,
+  favicon = "../../public/img/pokedex.png",
+  image,
+} = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -16,6 +23,16 @@ const { title, favicon = "../../public/img/pokedex.png" } =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href={favicon} type="image/x-icon" />
+
+    <!--SEO-->
+    <meta name="description" content={description} />
+    <meta name="auth" content={description} />
+
+    <!--OF MetaTags-->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={"alxrgdriguez"} />
+
     <title>{title}</title>
     <ClientRouter />
   </head>
