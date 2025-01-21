@@ -13,17 +13,26 @@ const title = "Inicio  |  Pokemons";
 ---
 
 <MainLayout title={title}>
-  <h1 class="text-5xl font-bold text-center mt-6">Listado de Pokemons</h1>
-  <hr class="mt-4 mb-4" />
+  <img
+    src="../../public/img/pokemon.png"
+    class="text-5xl font-bold text-center mt-6"
+  /></MainLayout
+>
+<hr class="mt-4 mb-4" />
 
-  <section
-    aria-label="Listado de Pokemons"
-    class="grid grid-cols-4 gap-4 mt-5 mb-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-  >
-    {
-      data.results.map((pokemon) => (
-        <PokemonCard name={pokemon.name} url={pokemon.url} />
-      ))
-    }
-  </section>
-</MainLayout>
+<section
+  aria-label="Listado de Pokemons"
+  class="grid grid-cols-4 gap-4 mt-5 mb-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+>
+  {
+    data.results.map((pokemon) => (
+      <PokemonCard name={pokemon.name} url={pokemon.url} />
+    ))
+  }
+</section>
+
+<style>
+  img {
+    @apply w-1/2 mx-auto;
+  }
+</style>

@@ -6,7 +6,7 @@ interface Props {
   favicon?: string;
 }
 
-const { title, favicon = "/favicon.ico" } = Astro.props;
+const { title, favicon = "../../public/img/pokedex.png" } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,6 +15,7 @@ const { title, favicon = "/favicon.ico" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="shortcut icon" href={favicon} />
     <!--Required -->
     <title>{title}</title>
     <ClientRouter />
