@@ -1,9 +1,9 @@
 ---
 import type { GetStaticPaths } from "astro";
 // Codigo server side only
-import type { PokemonListResponse } from "../../interfaces/pokemon-list.response";
-import PokemonCard from "../../components/pokemons/pokemonCard.astro";
-import MainLayout from "../../layouts/MainLayout.astro";
+import type { PokemonListResponse } from "@interfaces/pokemon-list.response";
+import PokemonCard from "@components/pokemons/pokemonCard.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 
 // Paginación
 export const getStaticPaths = (async ({ paginate }) => {
