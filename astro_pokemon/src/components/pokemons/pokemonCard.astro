@@ -1,6 +1,4 @@
 ---
-import type { PokemonInfoResponse } from "../../interfaces/pokemon-info.response";
-
 interface Props {
   name: string;
   url: string;
@@ -8,41 +6,27 @@ interface Props {
 }
 
 const { name, url, isBig = false } = Astro.props;
+
 const id = url.split("/").at(-2);
-const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+
+const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 ---
 
-<div class="rounded flex flex-col justify-center items-center p-2">
-  <a href=`/pokemons/${name}`>
-    <img
-      transition:name={`${name}-image`}
-      class:list={[
-        `rounded flex flex-col justify-center items-center p-2`,
-        {
-          border: !isBig,
-        },
-
-        {
-          "w-25 h-26": isBig,
-          "w-28 h-28": !isBig,
-        },
-      ]}
-      src={img}
-      alt={name}
-      class="object-cover w-50 h-50 mx-auto rounded-xl transition-transform duration-300 transform hover:scale-110"
-    />
-  </a>
-
-  <span
-    class:list={[
-      `capitalize
-      font-bold
-      text-center
-      text-1xl`,
-
-      {
-        "text-4xl": isBig,
-      },
-    ]}>#{id} {name}</span
-  >
-</div>
+<a
+  href={`/pokemons/${name}`}
+  class:list={[
+    "rounded flex flex-col justify-center items-center p-2",
+    { border: !isBig },
+  ]}
+>
+  <img
+    transition:name={`${id}-image`}
+    class:list={[{ "w-26 h-26": isBig, "w-22 h-22": !isBig }]}
+    src={imageSrc}
+    alt={`${name} artwork`}
+  />
+  <span class:list={["capitalize", { "text-4xl": isBig }]}>
+    #{id}
+    {name}
+  </span>
+</a>

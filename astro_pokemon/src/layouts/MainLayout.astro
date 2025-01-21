@@ -6,22 +6,22 @@ interface Props {
   favicon?: string;
 }
 
-const { title, favicon = "../../public/img/pokedex.png" } = Astro.props;
+const { title, favicon = "../../public/img/pokedex.png" } =
+  Astro.props as Props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="shortcut icon" href={favicon} />
-    <!--Required -->
+    <link rel="shortcut icon" href={favicon} type="image/x-icon" />
     <title>{title}</title>
     <ClientRouter />
   </head>
   <body class="bg-slate-800 text-slate-100 m-auto max-w-3xl">
-    <main class="mt-10"></main>
-    <slot />
+    <main class="my-10">
+      <slot />
+    </main>
   </body>
 </html>
