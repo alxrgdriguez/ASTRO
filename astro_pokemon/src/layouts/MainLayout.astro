@@ -39,8 +39,10 @@ const {
   </head>
   <body class="bg-slate-800 text-slate-100">
     <NavBar />
-    <main class="my-10 m-auto max-w-3xl mx-4">
-      <slot />
-    </main>
+    <div class="flex justify-center">
+      <main class="my-10 max-w-3xl w-full px-4">
+        <slot />
+      </main>
+    </div>
   </body>
 </html>
