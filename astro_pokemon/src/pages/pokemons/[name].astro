@@ -114,7 +114,6 @@ const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprit
     if (isFavorite) {
       heartOutLine.classList.add("hidden");
       heartFull.classList.remove("hidden");
-      
     }
 
     const toggleFavorite = () => {
@@ -129,9 +128,8 @@ const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprit
           name: name,
         });
       }
+      localStorage.setItem("favorites", JSON.stringify(favoritePokemon));
     };
-
-    localStorage.setItem("favorites", JSON.stringify(favoritePokemon));
 
     btnFavorite.addEventListener("click", () => {
       heartOutLine.classList.toggle("hidden");
@@ -152,12 +150,3 @@ const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprit
   #btn-favorite {
   }
 </style>
-
-<script>
-  const anchor = document.querySelector("a[data-go-back]")!;
-
-  anchor.addEventListener("click", (e) => {
-    e.preventDefault();
-    history.back();
-  });
-</script>
