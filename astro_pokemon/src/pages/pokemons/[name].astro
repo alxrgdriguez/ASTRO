@@ -102,7 +102,7 @@ const imageSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprit
 
     const name = btnFavorite.dataset.name ?? "";
     const id = btnFavorite.dataset.id ?? 0;
-    const isFavorite = favoritePokemon.some((fav) => fav.name === name);
+    const isFavorite = favoritePokemon.find((fav) => fav.name === name);
 
     const heartOutLine = btnFavorite.querySelector(
       "[data-outline]"
