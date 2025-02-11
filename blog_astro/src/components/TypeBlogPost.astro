@@ -1,8 +1,14 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import { Formatter } from "../utils/formatter";
-const { frontmatter, url } = Astro.props;
 
-const posts = await Astro.glob("./posts-old/*.{md,mdx}");
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+
+const frontmatter = post.data;
 ---
 
 <div class="lg:flex">
@@ -14,7 +20,7 @@ const posts = await Astro.glob("./posts-old/*.{md,mdx}");
 
   <div class="flex flex-col justify-between py-6 lg:mx-6">
     <a
-      href={url}
+      href={`/posts/${post.slug}`}
       class="text-xl font-semibold text-gray-800 hover:underline dark:text-white"
     >
       {frontmatter.description}
