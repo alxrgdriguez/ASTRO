@@ -1,34 +1,65 @@
 ---
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import MainLayout from "../../layouts/MainLayout.astro";
 
 import post05IMG from "@images/post-05.png";
 ---
 
-<MainLayout title="Imagenes">
-  <h1 class="text-5xl">Imagenes</h1>
+<MainLayout title="Imágenes">
+  <h1 style="color:aliceblue" class="text-5xl">Imágenes</h1>
 
+  <!-- Imagen estática -->
+  <h2 style="color: aliceblue;">Imagen estática normal sin compression</h2>
   <img
     loading="eager"
     src="/assets/images/post-05.png"
-    width="250px"
-    height="250px"
+    width="250"
+    height="250"
     alt="post-05"
   />
 
-  <Image src={post05IMG} alt="post-05" width="250" height="250" />
+  <!-- Imagen con estilo personalizado -->
 
-  <div
-    style={{
-      height: "3000px",
-    }}
-  >
-    <img
-      loading="lazy"
-      src="/assets/images/post-01.png"
-      width="250px"
-      height="250px"
-      alt="post-01"
-    />
-  </div>
+  <h2 style="color:aliceblue">Imagen quality low</h2>
+  <Image
+    src={post05IMG}
+    quality="low"
+    alt="post-05"
+    width={250}
+    height={250}
+    style={{ objectFit: "cover" }}
+  />
+
+  <h2 style="color:aliceblue">Imagen quality high</h2>
+  <Image
+    src={post05IMG}
+    quality="high"
+    alt="post-05"
+    width={250}
+    height={250}
+    style={{ objectFit: "cover" }}
+  />
+
+  <h2 style="color: aliceblue;">Formatos</h2>
+  <Image
+    src={post05IMG}
+    widths={[250, 500, 1000]}
+    sizes="(max-width: 500px) 100vw, 500px"
+    format="webp"
+    alt="post-05"
+    width={250}
+    height={250}
+    style={{ objectFit: "cover" }}
+  />
+
+  <h2 style="color:aliceblue;">Imagen Picture</h2>
+  <Picture
+    widths={[250, 500, 1000]}
+    sizes="(max-width: 500px) 100vw, 500px"
+    src={post05IMG}
+    alt="post-05"
+    width={250}
+    height={250}
+    style={{ objectFit: "cover" }}
+  />
 </MainLayout>
