@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+a {
+    @apply text-white;
+}
+
+.disabled {
+    @apply bg-gray-600 opacity-50 cursor-not-allowed;
+}

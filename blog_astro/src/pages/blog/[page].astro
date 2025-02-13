@@ -1,0 +1,66 @@
+---
+import type { GetStaticPaths } from "astro";
+import TypedBlogPost from "../../components/TypeBlogPost.astro";
+import { getCollection } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  // Obtener los posts del contenido
+  const blogPosts = await getCollection("blog");
+
+  // Paginación con 2 posts por página
+  return paginate(blogPosts, { pageSize: 2 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<MainLayout title="Blog | Páginado">
+  <div class="py-10 mx-auto">
+    <h1 class="text-3xl font-semibold capitalize lg:text-4xl text-white">
+      Fernando's Blog paginado
+    </h1>
+  </div>
+
+  <section class="bg-gray-900" aria-label="Entradas de blog">
+    <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+      {page.data.map((post) => <TypedBlogPost post={post} />)}
+    </div>
+  </section>
+
+  <section aria-label="Controles" class="flex justify-between mt-10">
+    <!-- Botón Anteriores -->
+    {
+      page.url.prev ? (
+        <a
+          href={page.url.prev}
+          class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+        >
+          ⬅️ Anteriores
+        </a>
+      ) : (
+        <span class="bg-gray-600 text-white p-2 rounded opacity-50 cursor-not-allowed">
+          ⬅️ Anteriores
+        </span>
+      )
+    }
+
+    <!-- Botón Siguientes -->
+    {
+      page.url.next ? (
+        <a
+          href={page.url.next}
+          class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+        >
+          Siguientes ➡️
+        </a>
+      ) : (
+        <span class="bg-gray-600 text-white p-2 rounded opacity-50 cursor-not-allowed">
+          Siguientes ➡️
+        </span>
+      )
+    }
+  </section>
+</MainLayout>
+
+<style></style>
