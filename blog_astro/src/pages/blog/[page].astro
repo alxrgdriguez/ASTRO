@@ -18,8 +18,9 @@ const { page } = Astro.props;
 <MainLayout title="Blog | Páginado">
   <div class="py-10 mx-auto">
     <h1 class="text-3xl font-semibold capitalize lg:text-4xl text-white">
-      Fernando's Blog paginado
+      Blog Paginado
     </h1>
+    <a href="/">Volver al blog</a>
   </div>
 
   <section class="bg-gray-900" aria-label="Entradas de blog">
@@ -28,7 +29,7 @@ const { page } = Astro.props;
     </div>
   </section>
 
-  <section aria-label="Controles" class="flex justify-between mt-10">
+  <section aria-label="Controles" class="flex justify-between my-10">
     <!-- Botón Anteriores -->
     {
       page.url.prev ? (
