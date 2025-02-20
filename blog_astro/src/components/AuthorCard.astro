@@ -6,7 +6,6 @@ export interface Props {
 }
 
 const { author } = Astro.props;
-console.log(author.data.avatar);
 ---
 
 <div class="max-w-lg mx-auto my-10 bg-white rounded-lg shadow-md p-5">
@@ -20,17 +19,19 @@ console.log(author.data.avatar);
 
   <div class="flex justify-center mt-5 gap-2.5">
     <a
-      href={author.data.twitter}
+      href="https://x.com/?lang=es"
       style="color: rgb(64, 64, 214)"
       target="_blank">Twitter</a
     >
     <a
-      href={author.data.linkedIn}
+      href="https://es.linkedin.com/"
       style="color: rgb(64, 64, 214)"
       target="_blank">LinkedIn</a
     >
-    <a href={author.data.github} style="color: rgb(64, 64, 214)" target="_blank"
-      >GitHub</a
+    <a
+      href="https://github.com/"
+      style="color: rgb(64, 64, 214)"
+      target="_blank">GitHub</a
     >
   </div>
 
@@ -38,7 +39,7 @@ console.log(author.data.avatar);
     <h3 class="text-xl font-semibold">Bio</h3>
     <p class="text-gray-600 mt-2">{author.data.bio}</p>
     <div class="mt-5 flex justify-end">
-      <a style="color: black;" href={`/`}>Leer Más</a>
+      <a style="color: black;" href={`/blog/${author.id}`}>Leer Más</a>
     </div>
   </div>
 </div>
