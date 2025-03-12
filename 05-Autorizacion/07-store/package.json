@@ -9,23 +9,15 @@
     "astro": "astro"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@astrojs/db": "^0.14.8",
-=======
->>>>>>> bdaebce10f1fe17350005ca82e7ef6f6814f5439
     "@astrojs/netlify": "^6.2.3",
     "@auth/core": "^0.37.4",
     "@tailwindcss/vite": "^4.0.12",
     "astro": "^5.4.3",
     "auth-astro": "^4.2.0",
-<<<<<<< HEAD
     "bcryptjs": "^3.0.2",
     "sweetalert2": "^11.17.2",
     "tailwindcss": "^4.0.12",
     "uuid": "^11.1.0"
-=======
-    "sweetalert2": "^11.17.2",
-    "tailwindcss": "^4.0.12"
->>>>>>> bdaebce10f1fe17350005ca82e7ef6f6814f5439
   }
 }
