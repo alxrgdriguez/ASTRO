@@ -13,22 +13,18 @@ export default defineConfig({
       credentials: {
         email: {
           label: 'Email',
-          placeholder: 'mail@gmail.com',
           type: 'email',
         },
         password: {
           label: 'Password',
-          placeholder: '******',
           type: 'password',
         },
       },
       authorize: async ({ email, password }) => {
-        const users = await db
-        const user = await db
+        const [user] = await db
           .select()
           .from(User)
           .where(eq(User.email, `${email}`))
-          .then(users => users[0]);
 
         if(!user){
             throw new Error('No se encontro el usuario');
