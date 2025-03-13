@@ -1,35 +1,37 @@
-// import { defineMiddleware } from 'astro:middleware';
-// import { getSession } from 'auth-astro/server';
+import { defineMiddleware } from "astro:middleware";
+import { getSession } from "auth-astro/server";
 
-// const notAuthenticatedRoutes = ['/login', '/register'];
+const notAuthenticatedRoutes = ["/login", "/register"];
 
-// export const onRequest = defineMiddleware(
-//   async ({ url, locals, redirect }, next) => {
-//     const isLoggedIn = false;
+export const onRequest = defineMiddleware(
+  async ({ url, locals, redirect, request }, next) => {
+    const session = await getSession(request);
+    const isLoggedIn = !!session;
 
-//     // TODO:
-//     locals.isLoggedIn = isLoggedIn;
-//     locals.user = null;
+    const user = session?.user;
 
-//     if (locals.user) {
-//       // TODO:
-//       // locals.user = {
-//       //   avatar: UserActivation.photoURL ?? '',
-//       //   email: user.email!,
-//       //   name: user.name!,
-//       //   emailVerified: user.emailVerified,
-//       // };
-//     }
+    locals.isLoggedIn = isLoggedIn;
+    locals.user = null;
 
-//     // TODO: Eventualmente tenemos que controlar el acceso por roles
-//     if (!locals.isAdmin && url.pathname.startsWith('/dashboard')) {
-//       return redirect('/');
-//     }
+    if (user) {
+      // TODO
+      locals.user = {
+        email: user.email!,
+        name: user.name!,
+      };
 
-//     if (isLoggedIn && notAuthenticatedRoutes.includes(url.pathname)) {
-//       return redirect('/');
-//     }
+      locals.isAdmin = user.role === "admin";
+    }
 
-//     return next();
-//   }
-// );
+    // TODO: Eventualmente tenemos que controlar el acceso por roles
+    if (!locals.isAdmin && url.pathname.startsWith("/dashboard")) {
+      return redirect("/");
+    }
+
+    if (isLoggedIn && notAuthenticatedRoutes.includes(url.pathname)) {
+      return redirect("/");
+    }
+
+    return next();
+  }
+);
